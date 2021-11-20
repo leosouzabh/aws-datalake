@@ -1,4 +1,4 @@
-name: Deploy Data Platform to Development
+name: Deploy Data Platform to Staging
 
 on:
   push:
