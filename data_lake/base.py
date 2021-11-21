@@ -18,9 +18,11 @@ class BaseDataLakeBucket(s3.Bucket):
         super().__init__(
             scope=scope,
             id=self.obj_name,
+            bucket_name=self.obj_name,
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
             encryption=s3.BucketEncryption.S3_MANAGED,
             versioned=True,
+            removal_policy=core.RemovalPolicy.DESTROY,
             **kwargs
         )
         self.set_default_lifecycle_rule()

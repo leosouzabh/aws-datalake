@@ -5,8 +5,6 @@ from aws_cdk import (
 )
 
 from data_lake.base import BaseDataLakeBucket, DataLakeLayer
-
-
 class DataLakeStack(core.Stack):
     def __init__(self, scope: core.Construct, **kwargs):
         self.deploy_env = os.environ["ENVIRONMENT"]
