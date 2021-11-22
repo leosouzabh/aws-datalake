@@ -6,8 +6,8 @@ from aws_cdk import (
 from stacks.datalake.base import BaseDataLakeBucket, DataLakeLayer
 
 class DataLakeStack(core.Stack):
-    def __init__(self, scope: core.Construct, **kwargs):
-        self.deploy_env = os.environ["ENVIRONMENT"]
+    def __init__(self, scope: core.Construct, deploy_env, **kwargs):
+        self.deploy_env = deploy_env
         super().__init__(scope, id=f"{self.deploy_env}-datalake-stack", **kwargs)
 
         self.datalake_raw_bucket = BaseDataLakeBucket(self, layer=DataLakeLayer.RAW)

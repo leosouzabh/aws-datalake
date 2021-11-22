@@ -44,8 +44,8 @@ class RawKinesisRole(iam.Role):
         self.attach_inline_policy(policy)
 
 class KinesisStack(core.Stack):
-    def __init__ (self, scope: core.Construct, raw_bucket: BaseDataLakeBucket, **kwargs):
-        self.deploy_env = os.environ["ENVIRONMENT"]
+    def __init__ (self, scope: core.Construct, deploy_env, raw_bucket: BaseDataLakeBucket, **kwargs):
+        self.deploy_env = deploy_env
         self.raw_bucket = raw_bucket
         super().__init__(scope, id=f"{self.deploy_env}-kinesis-stack", **kwargs)
 

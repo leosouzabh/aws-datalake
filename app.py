@@ -11,12 +11,20 @@ from aws_cdk import core
 
 from stacks.datalake.stack import DataLakeStack
 from stacks.kinesis.stack import KinesisStack
+from stacks.network.stack import NetworkStack
 
+env = os.environ["ENVIRONMENT"]
 
 app = core.App()
-datalake_stack = DataLakeStack(app)
+datalake_stack = DataLakeStack(app, deploy_env=env)
 kinesis_stack = KinesisStack (
-    app, raw_bucket=datalake_stack.datalake_raw_bucket
+    app, 
+    deploy_env=env,
+    raw_bucket=datalake_stack.datalake_raw_bucket
+)
+rds_stack = NetworkStack (
+    app, 
+    deploy_env=env
 )
 
 app.synth()
