@@ -3,8 +3,8 @@ from aws_cdk import (
     aws_s3 as s3,
     core 
 )
+from stacks.datalake.base import BaseDataLakeBucket, DataLakeLayer
 
-from data_lake.base import BaseDataLakeBucket, DataLakeLayer
 class DataLakeStack(core.Stack):
     def __init__(self, scope: core.Construct, **kwargs):
         self.deploy_env = os.environ["ENVIRONMENT"]

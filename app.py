@@ -9,9 +9,14 @@ from aws_cdk import core as cdk
 # being updated to use `cdk`.  You may delete this import if you don't need it.
 from aws_cdk import core
 
-from data_lake.stack import DataLakeStack
+from stacks.datalake.stack import DataLakeStack
+from stacks.kinesis.stack import KinesisStack
 
 
 app = core.App()
-DataLakeStack(app)
+datalake_stack = DataLakeStack(app)
+kinesis_stack = KinesisStack (
+    app, raw_bucket=datalake_stack.datalake_raw_bucket
+)
+
 app.synth()
