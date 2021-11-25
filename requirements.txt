@@ -3,3 +3,4 @@ aws-cdk.assertions==1.133.0
 aws_cdk.aws_s3==1.133.0
 aws_cdk.aws_kinesisfirehose==1.133.0
 aws_cdk.aws_rds==1.133.0
+aws_cdk.aws_dms==1.133.0

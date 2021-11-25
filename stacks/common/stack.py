@@ -4,7 +4,7 @@ from aws_cdk import (
     core 
 )
 
-class NetworkStack(core.Stack):
+class CommonStack(core.Stack):
     def __init__(self, scope: core.Construct, deploy_env, **kwargs) -> None:
         self.deploy_env = deploy_env
         super().__init__(scope, id=f"{self.deploy_env}-network-stack", **kwargs)
@@ -48,7 +48,7 @@ class NetworkStack(core.Stack):
             vpc=self.custom_vpc,
             instance_identifier=f"rds-{self.deploy_env}-orders-db",
             port=5432,
-            vpc_placement=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
             subnet_group=rds.SubnetGroup(
                 self,
                 f"rds-{self.deploy_env}-subnet",
